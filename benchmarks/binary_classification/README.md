@@ -28,7 +28,7 @@ Most important dependencies: [transformers](https://huggingface.co/transformers)
         ```
     * **Fine-Tuning a Model**: To fine-tune a model using the aforementioned configuration file and the **Accelerate** library, execute the following command:
         ```bash
-        accelerate launch --config_file ds_config.yaml fine_tune.py --data_dir /../HumorDataset/Dataset/  --num_epochs 5 --save_steps 200 --batch_size 4 --model_path facebook/dinov2-large --output_dir dinov2_large_Funny_Range --LR 0.00001 --weight_decay 0.001 --performance_log performance_logs
+        accelerate launch --config_file ds_config.yaml fine_tune_accel.py --data_dir /../HumorDataset/Dataset/  --num_epochs 5 --save_steps 200 --batch_size 4 --model_path facebook/dinov2-large --output_dir dinov2_large_Funny_Range --LR 0.00001 --weight_decay 0.001 --performance_log performance_logs
         ```
         In this command:
     - `--data_dir`: Specifies the directory containing the dataset.

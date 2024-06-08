@@ -10,7 +10,7 @@ To fine-tune a transformer model for regression on the dataset, follow these ste
 3. **Fine-Tuning Command**: To fine-tune a transformer model for regression, execute the following command:
 
     ```bash
-    accelerate launch --config_file on.yaml fine_tune_transformers_regression.py --data_dir /home/vedaant/Dataset/  --num_epochs 5 --save_steps 200 --batch_size 4 --model_path facebook/dinov2-large --output_dir dinov2_large_Funny_Range --LR 0.00001 --labels_path range_ratings.csv
+    accelerate launch --config_file on.yaml fine_tune_transformers_regression.py --data_dir Dataset/  --num_epochs 5 --save_steps 200 --batch_size 4 --model_path facebook/dinov2-large --output_dir dinov2_large_Funny_Range --LR 0.00001 --labels_path range_ratings.csv
     ```
 
     In this command:
