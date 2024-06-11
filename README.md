@@ -2,7 +2,16 @@
 
 Welcome to the HumorDB Repository! This repository contains a comprehensive collection of humorous images gathered from various sources on the internet, as well as images generated using cutting-edge AI techniques. To complement the funny images, we have also included non-funny images derived from the original funny images through sophisticated editing using tools like Photoshop and other generative AI techniques. The primary objective of this dataset is to serve as a valuable resource for testing complex scene understanding.
 
+### Load Huggingface Dataset
 
+```python
+humor_db = load_dataset("VedaantJain/HumorDB")
+```
+
+Each item in the dataset has the following keys: **image, range_ratings_mean, comparison_ratings, binary_ratings, words**.
+
+
+## Dataset Description
 ### Task Types
 
 1. Binary Classification: Annotators were asked to classify each image pair as either "Funny" or "Not Funny."
@@ -28,7 +37,7 @@ These are split into Train, Valid, Test sets as we want to keep the slightly mod
 
 ## Running baselines and Reproducing Paper Results
 
-    Please refer to the folder and README in the benchmarks folder of binary classification, regression, and comparison for more details on how to run the baselines and reproduce the paper results. There are detailed instructions on how to run the baselines and reproduce the paper results in the README of each folder. For training LlaVA, please use the json files in the LlaVa_files folder.
+    Please refer to the folder and README in the benchmarks folder of binary classification, regression, and comparison for more details on how to run the baselines and reproduce the paper results. There are detailed instructions on how to run the baselines and reproduce the paper results in the README of each folder. For training LlaVA, please use the json files similar to the ones in the LlaVa_files folder with the training instructions from the official LlaVA repository.
 
 ## Data Sources
 
@@ -49,9 +58,5 @@ The raw user data is present in directories: user_binary, user_range, user_comp.
 ### Words about images
 Our crowd-source annotators for comparison tasks were asked to write a word or a phrase about the funnier image. We use these results to get a list of words that give humor to images, by selecting those that occur in at least 30% of the responses. These are present in image_common_words.txt. This is useful to fine tune vision-language models like BLiP and LlaVA.
 
-### Note
-During the initial data collection phase, we prioritized gathering a larger sample of images from the internet that were supposed to be funny, while relatively fewer non-funny images were included. Additionally, we created modified versions of a substantial number of images obtained from the internet to form image pairs with differing funniness levels. However, as we obtained ratings from users, we observed an interesting trend: some images from the internet that were initially considered funny turned out to be perceived as not funny by the annotators.
-
-This unexpected discovery led to an important shift in the dataset's composition. As we aimed to ensure the accuracy and authenticity of the final dataset, we decided to include more of these "not funny" images, which emerged after user ratings, and maintain a balance with the "funny" images. Consequently, the final dataset contains more "not funny" images than "funny" images due to this realization during the data processing.
-
-While this adjustment may appear unanticipated, it actually strengthens the dataset's real-world relevance and enhances its potential for humor recognition research and analysis. We believe that this comprehensive dataset, with its updated composition, will better represent the diverse aspects of humor perception.
+## Using Raw Participant Data
+Refer to `analyse_data.ipynb` to see how the data from participants was aggregated, the `user_binary`, `user_range`, `user_compare` folders give participants' data that was used. Note that this does not include the discarded data caused due to participants unreliability(for details refer to the paper). 
